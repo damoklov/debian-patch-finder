@@ -3,8 +3,7 @@ import csv
 
 
 def save_file():
-	file = urllib.request.urlopen(
-		'https://salsa.debian.org/security-tracker-team/security-tracker/raw/master/data/CVE/list').readlines()
+	file = urllib.request.urlopen('https://salsa.debian.org/security-tracker-team/security-tracker/raw/master/data/CVE/list').readlines()
 	generic = [line.strip().decode() for line in file]
 	result = list()
 	i = 0
