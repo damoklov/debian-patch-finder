@@ -3,7 +3,8 @@ import csv
 
 
 def save_file():
-	file = urllib.request.urlopen('https://salsa.debian.org/security-tracker-team/security-tracker/raw/master/data/CVE/list').readlines()
+	file = urllib.request.urlopen(
+		'https://salsa.debian.org/security-tracker-team/security-tracker/raw/master/data/CVE/list').readlines()
 	generic = [line.strip().decode() for line in file]
 	result = list()
 	i = 0
@@ -18,7 +19,7 @@ def save_file():
 				i += 1
 				notes = list()
 				while not generic[i].startswith('CVE'):
-					if 'NOT-FOR-US' in generic[i] or 'RESERVED' in generic[i]\
+					if 'NOT-FOR-US' in generic[i] or 'RESERVED' in generic[i] \
 							or 'NOTE' in generic[i] or 'TODO' in generic[i]:
 						notes.append(generic[i])
 						i += 1
@@ -59,5 +60,5 @@ def write_to_csv(data, attr='w'):
 
 if __name__ == '__main__':
 	data = save_file()
-	#write_to_txt(data)
-	#write_to_csv(data)
+# write_to_txt(data)
+# write_to_csv(data)
