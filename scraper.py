@@ -3,7 +3,13 @@ import csv
 
 
 def save_file():
-    file = urllib.request.urlopen('https://salsa.debian.org/security-tracker-team/security-tracker/raw/master/data/CVE/list').readlines()
+    """
+    Pulls all information from CVE tracking list
+
+    None -> list
+    """
+    URL = 'https://salsa.debian.org/security-tracker-team/security-tracker/raw/master/data/CVE/list'
+    file = urllib.request.urlopen(URL).readlines()
     generic = [line.strip().decode() for line in file]
     result = list()
     i = 0
@@ -41,8 +47,13 @@ def save_file():
     return result
 
 
-def write_to_txt(data, attr='w'):
-    f = open('data.txt', attr, encoding='utf-8', errors='ignore')
+def write_to_txt(data, filename, attr='w'):
+    """
+    Writes data from tracking list to txt file
+
+    (list, str, str) -> None
+    """
+    f = open(filename, attr, encoding='utf-8', errors='ignore')
     for collection in data:
         for item in collection:
             f.write(item)
@@ -51,13 +62,18 @@ def write_to_txt(data, attr='w'):
     f.close()
 
 
-def write_to_csv(data, attr='w'):
-    writer = csv.writer(open('data.csv', attr))
+def write_to_csv(data, filename, attr='w'):
+    """
+    Writes data from tracking list to csv file
+
+    (list, str, str) -> None
+    """
+    writer = csv.writer(open(filename, attr))
     for collection in data:
         writer.writerow([item for item in collection])
 
 
 if __name__ == '__main__':
     data = save_file()
-    write_to_txt(data)
-    write_to_csv(data)
+    write_to_txt(data, 'data_main.txt')
+    write_to_csv(data, 'data_main.csv')
