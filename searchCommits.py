@@ -36,7 +36,6 @@ def save_file():
 
     None -> list
     """
-    # TODO: move to separate function
     generic = pull_list()
     result = list()
     i = 0
@@ -48,7 +47,7 @@ def save_file():
                 i += 1
                 notes = list()
                 while not generic[i].startswith('CVE'):
-                    commit_pattern = "http[s]?:\/\/.+commit\/.+$"
+                    commit_pattern = "http[s]?:\/\/.+commit\/[\S]+"
                     if re.search(commit_pattern, generic[i]):
                         link = re.findall(commit_pattern, generic[i])
                         notes.append(link[0])
