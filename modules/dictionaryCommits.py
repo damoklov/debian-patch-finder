@@ -74,5 +74,5 @@ def create_class_dictionary(generator):
         commit.add_to_dictionary()
 
 
-filelines = read_file('data/data_commits.txt')
+filelines = read_file('../data/data_commits.txt')
 create_class_dictionary(filelines)
