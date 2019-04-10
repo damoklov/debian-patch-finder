@@ -23,8 +23,10 @@ def result_printer():
     commits_request = read_user_input()
     if commits_request:
         print(commits_request)
+        return commits_request
     else:
         print('Nothing found on this CVE')
+        quit(0)
 
 
 if __name__ == '__main__':
