@@ -5,7 +5,7 @@ from chooseCVE import read_user_input
 
 
 github = {'github'}
-git_like = {'git', 'gnunet', 'source', 'anongit', 'cgit', 'w1.fi', 'roy',
+git_like = {'git.', 'gnunet', 'source', 'anongit', 'cgit', 'w1.fi', 'roy',
             'gitweb', 'repos', 'bacula', 'pkgs', 'kernel'}
 lab_like = {'gitlab', 'dulwich', 'dev', '0xacab', 'lab', 'salsa'}
 source_like = {'perl5', 'source', 'repo'}
@@ -56,6 +56,7 @@ def get_lab_filepage(files, link):
     """
     for file in files:
         URL = link.replace('commit/', 'raw/') + '/' + file
+        print(URL)
         wget.download(URL)
 
 
