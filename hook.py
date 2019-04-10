@@ -56,7 +56,7 @@ def get_lab_filepage(files, link):
     """
     for file in files:
         URL = link.replace('commit/', 'raw/') + '/' + file
-        print(URL)
+        print('\n' + URL)
         wget.download(URL)
 
 
